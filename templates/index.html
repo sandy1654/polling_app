@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polling App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="poll-container">
+        <h1>{{ poll['question'] }}</h1>
+        <ul>
+            {% for i, option in enumerated_options %}
+            <li>
+                <a href="{{ url_for('vote', option_id=i) }}">
+                    {{ option }} - {{ poll['votes'][i] }} votes
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
